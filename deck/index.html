@@ -69,9 +69,9 @@
 				        <section>
 				            <h2>JS, OSS & me</h2>
                             <img  src="img/grunt_small.png" alt="Grunt" title="Grunt" />
-                            <img src="img/tao.png" alt="TAO" title="TAO" />
-                            <br />
-                            <img src="img/jquery-ui.png" alt="jQuery-UI" title="jQuery-UI" />
+                            <img src="img/tao.png" alt="TAO" title="TAO" /><br />
+                            <img src="img/jquery-ui.png" alt="jQuery-UI" title="jQuery-UI" /><br />
+                            <img src="img/logo-ubuntu-orange.png" alt="jQuery-UI" title="Ubuntu" />
                         </section>
 				        <section>
 				            <h2>Follow the dealer</h2>
@@ -113,7 +113,6 @@
                                             <td>Repo</td>
                                             <td>Total packages</td>
                                             <td>Platform years old</td>
-                                            <td>Avg/year since platform</td>
                                             <td>Repo years old</td>
                                             <td>Avg/year since repo</td>
                                         </tr>
@@ -122,43 +121,39 @@
                                         <tr class="fragment">
                                             <td>Python</td>
                                             <td>PyPI</td>
-                                            <td>31 066</td>
-                                            <td>22</td>
-                                            <td>1 412</td>
-                                            <td>10</td>
-                                            <td>3 106</td>
+                                            <td>40 460</td>
+                                            <td>23</td>
+                                            <td>11</td>
+                                            <td>3 678</td>
                                         </tr>
                                         <tr class="fragment">
                                             <td>Java</td>
-                                            <td>Maven central</td>
-                                            <td>58 272</td>
-                                            <td>18</td>
-                                            <td>3 237</td>
-                                            <td>9</td>
-                                            <td>6 474</td>
+                                            <td>Maven</td>
+                                            <td>71 916</td>
+                                            <td>19</td>
+                                            <td>10</td>
+                                            <td>7 194</td>
                                         </tr>
                                         <tr class="fragment">
                                             <td>Ruby</td>
-                                            <td>Gems.org</td>
-                                            <td>56 869</td>
-                                            <td>18</td>
-                                            <td>3 159</td>
-                                             <td>5</td>
-                                            <td>11 373</td>
+                                            <td>Gems</td>
+                                            <td>71 461</td>
+                                            <td>19</td>
+                                            <td>6</td>
+                                            <td>11 910</td>
                                         </tr>
                                         <tr class="fragment">
                                             <td>Node</td>
                                             <td>Npm</td>
-                                            <td>30471</td>
+                                            <td>61 681</td>
+                                            <td>6</td>
                                             <td>4</td>
-                                            <td class="fragment highlight-green">7617</td>
-                                            <td>3</td>
-                                            <td class="fragment highlight-green">10 157</td>
+                                            <td class="fragment highlight-green">15 170</td>
                                         </tr>
                                     </tbody>
                                     <tfoot>
                                         <tr>
-                                            <td colspan="7">stats polled the 21st of May 2013</td>
+                                            <td colspan="7">stats polled the 1st of March 2014</td>
                                         </tr>
                                     </tfoot>
                                 </table>
@@ -505,6 +500,42 @@ http.createServer(function(request, response) {
 $ node hello_node_world.js
 					    </code></pre>
                      </section>
+                    <section>
+                        <h3>The CommonJS way</h3>
+                        <pre class="fragment"><code data-trim contenteditable class="bash">
+//foo.js
+exports.bar = function(){
+    
+}
+//or
+module.exports = {
+    bar : function(){
+
+    }
+};
+                        </code></pre>
+                        <pre class="fragment"><code data-trim contenteditable class="bash">
+var foo = require('foo')
+foo.bar();
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>The CommonJS way</h3>
+                        <pre class="fragment"><code data-trim contenteditable class="bash">
+function FooBared(){
+
+}
+FooBared.prototype.doit = function (){
+
+};
+
+module.exports = Foobared;
+                        </code></pre>
+                        <pre class="fragment"><code data-trim contenteditable class="bash">
+var Foobared = require('foobared')
+fooBar = new Foobared();
+                        </code></pre>
+                    </section>
                      <!--<section data-state="soothe">-->
                         <!--<h3>Demo : <a href="https://github.com/krampstudio/node-htop" target="_blank">node-htop</a></h3>-->
                         <!--<img src="img/demo/express.png" alt="express" />-->
