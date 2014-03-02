@@ -501,7 +501,7 @@ $ node hello_node_world.js
 					    </code></pre>
                      </section>
                     <section>
-                        <h3>The CommonJS way</h3>
+                        <h3>The CommonJS way 1/3</h3>
                         <pre class="fragment"><code data-trim contenteditable class="bash">
 //foo.js
 exports.bar = function(){
@@ -515,12 +515,12 @@ module.exports = {
 };
                         </code></pre>
                         <pre class="fragment"><code data-trim contenteditable class="bash">
-var foo = require('foo')
+var foo = require('./foo')
 foo.bar();
                         </code></pre>
                     </section>
                     <section>
-                        <h3>The CommonJS way</h3>
+                        <h3>The CommonJS way 2/3</h3>
                         <pre class="fragment"><code data-trim contenteditable class="bash">
 function FooBared(){
 
@@ -532,8 +532,25 @@ FooBared.prototype.doit = function (){
 module.exports = Foobared;
                         </code></pre>
                         <pre class="fragment"><code data-trim contenteditable class="bash">
-var Foobared = require('foobared')
-fooBar = new Foobared();
+var Foobared = require('./foobared')
+var fooBar = new Foobared();
+fooBar.doit();
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>The CommonJS way 3/3</h3>
+                        <pre class="fragment"><code data-trim contenteditable class="bash">
+var cache = 0;
+cache++;
+exports.get = function(){
+    return cache;
+};
+                        </code></pre>
+                        <pre class="fragment"><code data-trim contenteditable class="bash">
+var value1 = require('./cached').get();
+console.log(value1);
+var value2 = require('./cached').get();
+console.log(value2);
                         </code></pre>
                     </section>
                      <!--<section data-state="soothe">-->
@@ -729,7 +746,6 @@ var app = connect()
   })
  .listen(3000);
                         </code></pre>
-                        <small>demo:app.js#20</small>
                      </section>
                      <section>
                         <h3>Errors</h3>
@@ -762,12 +778,25 @@ aDomain.on('error', function(err){
 aDomain.run(function(){
     //do some errorable stuffs (throws, errbacks, etc. are catched)
 });</code></pre>
-                        <small>demo:lib/statpoller.js#63</small>
                      </section>
+                     <section>
+                        <h3>Streams</h3>
+                        <pre class="fragment"><code data-trim contenteditable class="javascript">
+var stream = request("http://nodestreams.com/input/people.json.gz") 
+    .pipe(zlib.createGunzip())                          
+    .pipe(new Iconv("ISO-8859-1", "UTF-8"));           
 
+stream.pipe(fs.createWriteStream("output/people.json")); 
+stream.pipe(process.stdout)
+</code></pre>
+                     </section>
+                </section>
+
+<!-- Scaling -->
+                <section>
                      <section>
                         <h2>Scaling node.js</h2>
-                        <blockquote>But, wait, I've only one process...</blockquote>        
+                        <blockquote class="fragment">But, wait, I've only one process...</blockquote>        
                     </section>
                     <section>
                         <h3>Scale Up</h3>
@@ -793,7 +822,6 @@ if (cluster.isMaster) {
 } else {
     //I'm in a fork
 }                        </code></pre>
-                        <small>demo:server.js</small>
                      </section>
                      <section>
                         <h3>Scale out</h3>
